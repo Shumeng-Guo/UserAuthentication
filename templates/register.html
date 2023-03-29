@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Signup</title>
+</head>
+
+<body>
+    <h3> Sign Up! </h3>
+
+    <form method="POST">
+        <div>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        {{ message }}
+                        <br>
+                        <div>
+                        {% if category=="Error" %}                            
+                            <a href="{{ url_for('login') }}">
+                                <button type="button"> Sign In </button>
+                            </a>
+                            <br>                            
+                        {% endif %}
+                    </div>
+                        
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+
+        <div>
+            <label for="username"> Username:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <br>
+
+        <div>
+            <label for="email"> Email:</label>
+            <input type="text" id="email" name="email" required>
+        </div>
+        <br>
+
+        <div>
+            <label for="password"> Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <br>
+
+        <div>
+            <label for="ConfirmPassword"> Confirm Password:</label>
+            <input type="password" id="ConfirmPassword" name="ConfirmPassword" required>
+        </div>
+        <br>
+
+        <div>
+            <input type="submit">
+        </div>
+    </form>
+
+
+
+</body>
+</html>

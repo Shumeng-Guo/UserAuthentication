@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+</head>
+
+<body>
+    <h2> Welcome to the Authentication System </h2>
+
+    <h4> Already have an account with us? </h4>
+    <a href="{{ url_for('login') }}">
+    <button type="button"> Log In </button>
+    </a>
+
+    <h4> New? Create an account! </h4>
+    <a href="{{ url_for('register') }}">
+    <button type="button"> Register </button>
+    </a>
+
+</html>

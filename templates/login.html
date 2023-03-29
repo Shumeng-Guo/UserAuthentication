@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login</title>
+</head>
+
+<body>
+    <h3> Sign In! </h3>
+
+    <form method="POST">
+        <div>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        {{ message }}
+                        <br>
+                        <div>
+                        {% if message=="Incorrect username, please try again or SIGN UP" %}                            
+                            <a href="{{ url_for('register') }}">
+                                <button type="button"> Register </button>
+                            </a>
+                            <br>                            
+                        {% endif %}
+                    </div>
+                        
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+
+        <div>
+            <label for="username"> Username:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <br>
+
+        <div>
+            <label for="password"> Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <br>
+
+        <div>
+            <input type="submit">
+        </div>
+    </form>
+
+
+
+</body>
+</html>
