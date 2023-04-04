@@ -7,5 +7,5 @@ conn = sqlite3.connect('users.db')
 conn.execute("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT UNIQUE, email TEXT UNIQUE, password TEXT)")
 
 # # insert some records
-conn.execute("INSERT OR IGNORE INTO users (username, email, password) VALUES ('cassie', 'cassie@email.com','Cassie00'), ('eddie', 'eddie@email.com','Eddie111')")
+conn.execute("INSERT OR IGNORE INTO users (username, email, password) VALUES ('cassie', 'cassie@email.com','Cassie00@'), ('eddie', 'eddie@email.com','Eddie111@')")
 conn.commit()
