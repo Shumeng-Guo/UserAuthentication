@@ -1,14 +1,38 @@
-const registerform = document.getElementById('registerform')
+const registerform = document.getElementById('registrationform')
 const username = document.getElementById('username')
 const email = document.getElementById('email')
 const password = document.getElementById('password')
 const ConfirmPassword = document.getElementById('ConfirmPassword')
 
+// prevent a form from being submitted until all input fields have been validated
+// An event listener is a function that is attached to an HTML element to listen for a specific event on that element, 
+// such as a button click, a key press, or a form submission. When the specified event occurs on the element, 
+// the event listener is triggered and executes its associated code.
+// addEventListener(type, event handler/callback function) 
 registerform.addEventListener('submit', (e) => {
-    e.preventDefault();     // prevent the event from submitting
+    e.preventDefault();
 
     validateInputs();
 })
+
+// Add the following event listener outside of the validateInputs() function:
+// to validate as soon as the user enters any data into it
+username.addEventListener('input', () => {
+    validateInputs();
+  });
+
+email.addEventListener('input', () => {
+    validateInputs();
+  });
+
+password.addEventListener('input', () => {
+    validateInputs();
+  });
+
+ConfirmPassword.addEventListener('input', () => {
+    validateInputs();
+  });
+
 
 const setError = (element, message) => {
     const inputControl = element.parentElement;
@@ -37,6 +61,7 @@ const isValidPassword = password => {
     const regex = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
     return regex.test(password);
 };
+
 
 function validateInputs() {
     // get the values from the inputs
@@ -78,15 +103,5 @@ function validateInputs() {
         setSuccess(ConfirmPassword)
     }
 
-    // check if all inputs are successful
-    const inputs = [username, email, password, ConfirmPassword];
-    const allInputsSuccessful = inputs.every(input => input.parentElement.classList.contains('success'));
-
-    if (allInputsSuccessful) {
-        registerform.submit(); // submit the form
-    }
 }
 
-ConfirmPassword.addEventListener('input', () => {
-    validateInputs();
-});
